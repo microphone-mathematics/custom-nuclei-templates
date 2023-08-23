@@ -37,8 +37,12 @@ http:
           - "(?i)<[^>]*xss x=\"y\" onmouseover=\"alert\\('xss'\\)\"[^>]*>"
           - "(?i)<[^>]* x=\"y\" onmouseover=\"alert\\('xss'\\)\"[^>]*>"
           - "(?i)<[^>]* x=\"y\" onscrollsend=\"alert\\('xs'\\)\"[^>]*>"
+      - type: regex
+        part: body
+        negative: true
+        regex:
+          - "(?i)<script[^>]*>.*\\\\\"; alert\\('xss'\\); //.*</script>"
       - type: word
         part: header
         words:
           - "text/html"
-
