@@ -56,8 +56,18 @@ http:
           - "(?i)<script[^>]*>[\\s\\S]*\".*\"-alert\\?\\.\\(1337\\)-\"\\s*[\\s\\S]*</script>"
           - "(?i)<script[^>]*>[\\s\\S]*'.*'-alert\\(1337\\)-'\\s*[\\s\\S]*</script>"
           - "(?i)<script[^>]*>[\\s\\S]*'.*'-alert\\?\\.\\(1337\\)-'\\s*[\\s\\S]*</script>"
+      - type: regex
+        part: body
+        negative: true
+        regex:
+          - "(?i)<script[^>]*>[\\s\\S]*\".*\\\\\";alert\\(1337\\);\\s*//[\\s\\S]*</script>"
+          - "(?i)<script[^>]*>[\\s\\S]*\".*\\\\\";alert\\?\\.\\(1337\\);\\s*//[\\s\\S]*</script>"
+          - "(?i)<script[^>]*>[\\s\\S]*'.*\\\\';alert\\(1337\\);\\s*//[\\s\\S]*</script>"
+          - "(?i)<script[^>]*>[\\s\\S]*'.*\\\\';alert\\?\\.\\(1337\\);\\s*//[\\s\\S]*</script>"
+          - "(?i)<script[^>]*>[\\s\\S]*\".*\\\\\"-alert\\(1337\\)-\\\\\"\\s*[\\s\\S]*</script>"
+          - "(?i)<script[^>]*>[\\s\\S]*\".*\\\\\"-alert\\?\\.\\(1337\\)-\\\\\"\\s*[\\s\\S]*</script>"
+          - "(?i)<script[^>]*>[\\s\\S]*'.*\\\\'-alert\\?\\.\\(1337\\)-\\\\'\\s*[\\s\\S]*</script>"
       - type: word
         part: header
         words:
           - "text/html"
-
